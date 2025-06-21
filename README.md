@@ -31,7 +31,7 @@ A modern, collaborative to-do list application built with React, TypeScript, Fir
 
 1. **Clone the repository:**
    ```bash
-   git clone <your-repo-url>
+    git clone https://github.com/ktlviy/todo-lists-app.git
    cd tasks-list
    ```
 2. **Install dependencies:**
@@ -68,12 +68,12 @@ A modern, collaborative to-do list application built with React, TypeScript, Fir
 
 ### Dashboard
 
-![Dashboard Screenshot](screenshots/dashboard.png)
+![Dashboard Screenshot](https://github.com/user-attachments/assets/198633a7-b785-4e1c-aa4e-1dbd177b4f82)
 _Dashboard view with your lists and tasks._
 
 ### Login Page
 
-![Login Page Screenshot](screenshots/login.png)
+![Login Page Screenshot](https://github.com/user-attachments/assets/a60846f2-63c5-4782-ade6-4d1b72cd5aa6)
 _Login page for user authentication._
 
 ## Scripts
