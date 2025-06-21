@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { addCollaborator } from "@/services/list";
-import { Button } from "../ui/button";
+import { Button } from "../../ui/button";
 import {
   Select,
   SelectContent,
@@ -8,7 +8,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Input } from "../ui/input";
+import { Input } from "../../ui/input";
 import {
   AlertDialog,
   AlertDialogContent,
@@ -18,7 +18,7 @@ import {
 } from "@/components/ui/alert-dialog";
 import { Role, AlertProps, List } from "@/types/";
 
-const AddCollaboratorForm = ({ id }: List) => {
+const AddCollaboratorModal = ({ id }: List) => {
   const [email, setEmail] = useState("");
   const [role, setRole] = useState<Role>("viewer");
   const [alert, setAlert] = useState<AlertProps>({
@@ -105,4 +105,4 @@ const AddCollaboratorForm = ({ id }: List) => {
   );
 };
 
-export default AddCollaboratorForm;
+export default AddCollaboratorModal;

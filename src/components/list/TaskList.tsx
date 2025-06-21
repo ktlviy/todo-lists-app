@@ -2,11 +2,11 @@ import { useEffect, useState } from "react";
 import TaskItem from "../tasks/TaskItem";
 import { Task } from "@/types/task";
 import { fetchTasks, addTask, deleteTask } from "@/services/task";
-import AddTaskForm from "../tasks/AddTaskForm";
 import { Button } from "../ui/button";
 import { Dialog, DialogContent, DialogTitle, DialogFooter } from "../ui/dialog";
 import { useListRole } from "@/context/IsAdminContext";
 import { TaskListProps } from "@/types";
+import AddTaskModal from "../tasks/modals/AddTaskModal";
 
 const TaskList = ({ id, onEmptyState }: TaskListProps) => {
   const [tasks, setTasks] = useState<Task[]>([]);
@@ -106,16 +106,8 @@ const TaskList = ({ id, onEmptyState }: TaskListProps) => {
           <DialogTitle className="text-lg font-medium text-[#F79489] text-shadow">
             Add Task
           </DialogTitle>
-          <AddTaskForm id={id} disabled={!isAdmin} onAddTask={handleAddTask} />
-          <DialogFooter className="mt-2 flex gap-2 sm:flex-row flex-col">
-            <Button
-              variant="secondary"
-              className="bg-[#f0f0f0] text-[#333] rounded-lg px-3 py-1 text-sm font-medium hover:bg-[#ff5555] hover:text-white active:scale-95"
-              onClick={() => setShowModal(false)}
-            >
-              Close
-            </Button>
-          </DialogFooter>
+          <AddTaskModal id={id} disabled={!isAdmin} onAddTask={handleAddTask} />
+          <DialogFooter className="mt-2 flex gap-2 sm:flex-row flex-col"></DialogFooter>
         </DialogContent>
       </Dialog>
       <div className="space-y-2 mt-4 max-h-[70vh] overflow-y-auto scrollbar-thin scrollbar-track-[#F9F1F0] scrollbar-thumb-[#F79489] scrollbar-thumb-rounded scrollbar-thumb-hover-[#F8AFA6]">

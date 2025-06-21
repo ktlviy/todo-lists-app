@@ -1,5 +1,5 @@
 import { useAuth } from "@/context/AuthContext";
-import { LoginForm } from "@/components/auth/LoginForm";
+import { LoginForm } from "@/components/auth/forms/LoginForm";
 import { Link } from "react-router-dom";
 
 export default function LoginPage() {

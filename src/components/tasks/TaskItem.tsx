@@ -8,7 +8,7 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
 } from "@/components/ui/dropdown-menu";
-import EditTaskModal from "@/components/tasks/EditTaskModal";
+import EditTaskModal from "./modals/EditTaskModal";
 import { TaskItemProps } from "@/types/components";
 
 const TaskItem = ({

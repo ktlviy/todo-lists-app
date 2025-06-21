@@ -1,12 +1,16 @@
 import { useState } from "react";
 import { addTask } from "@/services/task";
 import { useAuth } from "@/context/AuthContext";
-import { Input } from "../ui/input";
-import { Button } from "../ui/button";
-import { Textarea } from "../ui/textarea";
+import { Input } from "../../ui/input";
+import { Button } from "../../ui/button";
+import { Textarea } from "../../ui/textarea";
 import { AddTaskFormProps } from "@/types";
 
-const AddTaskForm = ({ id, disabled = false, onAddTask }: AddTaskFormProps) => {
+const AddTaskModal = ({
+  id,
+  disabled = false,
+  onAddTask,
+}: AddTaskFormProps) => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const { user } = useAuth();
@@ -46,4 +50,4 @@ const AddTaskForm = ({ id, disabled = false, onAddTask }: AddTaskFormProps) => {
   );
 };
 
-export default AddTaskForm;
+export default AddTaskModal;

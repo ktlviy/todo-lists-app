@@ -45,3 +45,10 @@ export interface RouteConfig {
 export interface TaskListProps extends List {
   onEmptyState?: (empty: boolean) => void;
 }
+
+export interface EditTitleModalProps {
+  listId: string;
+  currentTitle: string;
+  onTitleUpdate: (newTitle: string) => void;
+  onClose: () => void;
+}

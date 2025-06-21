@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import CreateListForm from "@/components/list/CreateListForm";
+import CreateListModal from "@/components/list/modals/CreateListModal";
 import { fetchLists, createList, deleteList } from "@/services/list";
 import { useAuth } from "@/context/AuthContext";
 import { Button } from "@/components/ui/button";
@@ -134,16 +134,8 @@ export default function DashboardPage() {
           <DialogTitle className="text-lg font-medium text-[#F79489] text-shadow">
             Create New List
           </DialogTitle>
-          <CreateListForm onAddList={handleAddList} />
-          <DialogFooter className="mt-2 flex gap-2 sm:flex-row flex-col">
-            <Button
-              variant="secondary"
-              className="bg-[#f0f0f0] text-[#333] rounded-lg px-3 py-1 text-sm font-medium hover:bg-[#ff5555] hover:text-white active:scale-95"
-              onClick={() => setShowCreate(false)}
-            >
-              Cancel
-            </Button>
-          </DialogFooter>
+          <CreateListModal onAddList={handleAddList} />
+          <DialogFooter className="mt-2 flex gap-2 sm:flex-row flex-col"></DialogFooter>
         </DialogContent>
       </Dialog>
 

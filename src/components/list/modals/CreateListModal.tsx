@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { Button } from "../ui/button";
-import { Input } from "../ui/input";
+import { Button } from "../../ui/button";
+import { Input } from "../../ui/input";
 import { CreateListFormProps } from "@/types";
 
-const CreateListForm = ({ onAddList }: CreateListFormProps) => {
+const CreateListModal = ({ onAddList }: CreateListFormProps) => {
   const [title, setTitle] = useState("");
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -35,4 +35,4 @@ const CreateListForm = ({ onAddList }: CreateListFormProps) => {
   );
 };
 
-export default CreateListForm;
+export default CreateListModal;

@@ -109,3 +109,10 @@ export async function isAdminOfList(
     )
   );
 }
+
+export const editListTitle = async (listId: string, newTitle: string) => {
+  const listRef = doc(db, "lists", listId);
+  await updateDoc(listRef, {
+    title: newTitle,
+  });
+};

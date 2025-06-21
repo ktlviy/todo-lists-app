@@ -15,7 +15,8 @@ import {
   DialogFooter,
   DialogDescription,
 } from "@/components/ui/dialog";
-import AddCollaboratorForm from "./AddCollabaratorModal";
+import AddCollaboratorForm from "./modals/AddCollabaratorModal";
+import EditTitleModal from "./modals/EditTitleModal";
 import { deleteList } from "@/services/list";
 import { useListRole } from "@/context/IsAdminContext";
 import { ListCardProps } from "@/types";
@@ -23,7 +24,9 @@ import { ListCardProps } from "@/types";
 const ListCard = (list: ListCardProps) => {
   const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
   const [collabDialogOpen, setCollabDialogOpen] = useState(false);
+  const [editTitleDialogOpen, setEditTitleDialogOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
+  const [currentTitle, setCurrentTitle] = useState(list.title);
   const { isAdmin } = useListRole();
 
   const handleDeleteList = async () => {
@@ -39,13 +42,17 @@ const ListCard = (list: ListCardProps) => {
     setDeleteDialogOpen(false);
   };
 
+  const handleTitleUpdate = (newTitle: string) => {
+    setCurrentTitle(newTitle);
+  };
+
   if (!isVisible) return null;
 
   return (
     <div className="bg-white/80 border border-[#F79489] rounded-2xl shadow-[0_5px_15px_rgba(0,0,0,0.1)] p-5 flex flex-col gap-4 font-poppins w-full min-h-[300px] max-h-[80vh] overflow-y-auto scrollbar-thin scrollbar-track-[#F9F1F0] scrollbar-thumb-[#F79489] scrollbar-thumb-rounded scrollbar-thumb-hover-[#F8AFA6] backdrop-blur-sm">
       <div className="flex justify-between items-center">
         <h3 className="text-xl font-medium text-[#F79489] text-shadow">
-          {list.title}
+          {currentTitle}
         </h3>
         {isAdmin && (
           <DropdownMenu>
@@ -61,6 +68,12 @@ const ListCard = (list: ListCardProps) => {
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent className="bg-white/90 border-[#ff9999] rounded-lg shadow-[0_3px_10px_rgba(0,0,0,0.05)]">
+              <DropdownMenuItem
+                onClick={() => setEditTitleDialogOpen(true)}
+                className="text-[#F79489] hover:bg-[#fff5f5] hover:text-[#ff6666] focus:bg-[#fff5f5]"
+              >
+                Edit Title
+              </DropdownMenuItem>
               <DropdownMenuItem
                 onClick={() => setCollabDialogOpen(true)}
                 className="text-[#F79489] hover:bg-[#fff5f5] hover:text-[#ff6666] focus:bg-[#fff5f5]"
@@ -111,6 +124,19 @@ const ListCard = (list: ListCardProps) => {
             Add Collaborator
           </DialogTitle>
           <AddCollaboratorForm {...list} />
+        </DialogContent>
+      </Dialog>
+      <Dialog open={editTitleDialogOpen} onOpenChange={setEditTitleDialogOpen}>
+        <DialogContent className="bg-[linear-gradient(135deg,rgba(255,230,230,0.9),rgba(230,230,255,0.9))] border-[#ff9999] rounded-xl p-4 shadow-[0_3px_10px_rgba(0,0,0,0.05)]">
+          <DialogTitle className="text-xl font-medium text-[#F79489] text-shadow">
+            Edit List Title
+          </DialogTitle>
+          <EditTitleModal
+            listId={list.id}
+            currentTitle={currentTitle}
+            onTitleUpdate={handleTitleUpdate}
+            onClose={() => setEditTitleDialogOpen(false)}
+          />
         </DialogContent>
       </Dialog>
     </div>
